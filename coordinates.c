@@ -6,11 +6,25 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:20:30 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/18 19:09:23 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/25 21:13:27 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void			clean_coordinates(t_coordinates *ptr)
+{
+	t_coordinates	*start;
+
+	if (ptr == NULL)
+		return ;
+	while (ptr != NULL)
+	{
+		start = ptr->next;
+		free(ptr);
+		ptr = start;
+	}
+}
 
 static void		creat_coordinates2(t_mas *ptr, t_coordinates *dot, int i, int j)
 {

@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 17:27:17 by eschoen           #+#    #+#             */
-/*   Updated: 2019/02/24 18:54:18 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/25 22:20:25 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct				s_mas
 
 typedef struct				s_map
 {
-	char					letter;
 	int						width;
 	int						height;
 	char					**mas;
@@ -60,6 +59,9 @@ int							count(t_coordinates *ptr);
 char						**fillit_resolve(t_coordinates *tet);
 char						*ft_read(char *fd);
 void						cleanlist(t_mas *ptr);
+void						ft_memdel_map(char ***ap);
+void						clean_coordinates(t_coordinates *ptr);
+void						clean_newtetrimo(t_map *map);
 t_mas						*prepare(char *str);
 char						**fillit_create_map(int size);
 t_coordinates				*creat_coordinates(t_mas *ptr);

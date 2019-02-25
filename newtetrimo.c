@@ -6,11 +6,39 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 19:55:33 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/24 18:02:35 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/25 22:31:01 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void			ft_clean(t_map *ptr)
+{
+	int		i;
+
+	i = 0;
+	while (ptr->mas[i] != NULL)
+	{
+		free(ptr->mas[i]);
+		i++;
+	}
+	free(ptr->mas);
+}
+
+void			clean_newtetrimo(t_map *ptr)
+{
+	if (ptr == NULL)
+		return ;
+	while (ptr->next != NULL)
+	{
+		ft_clean(ptr);
+		ptr = ptr->next;
+		free(ptr->prev);
+		ptr->prev = NULL;
+	}
+	ft_clean(ptr);
+	free(ptr);
+}
 
 static void		createnewtetrimo2(t_map *new, t_coordinates *dot,\
 								t_coordinates *size)
@@ -63,7 +91,8 @@ t_map			*newtetrimo(t_coordinates *dot, t_coordinates *size)
 		createnewtetrimo2(new, dot, size);
 		if (dot->next == NULL)
 			break ;
-		new->next = (t_map*)malloc(sizeof(t_map));
+		if ((new->next = (t_map*)malloc(sizeof(t_map))) == NULL)
+			return (NULL);
 		new = new->next;
 		dot = dot->next;
 		size = size->next;

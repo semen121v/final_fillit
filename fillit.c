@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:04:29 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/24 18:42:50 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/25 22:24:35 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,20 @@ static t_mas		*check_tetrimisions2(int i, char *str)
 		if (valid_tetriminos2(str, 0, 0) == 1)
 		{
 			ptr = prepare(str);
+			ft_strdel(&str);
 			return (ptr);
 		}
 		else
+		{
+			ft_strdel(&str);
 			return (NULL);
+		}
 	}
 	else
+	{
+		ft_strdel(&str);
 		return (NULL);
+	}
 }
 
 t_mas				*check_tetrimisions1(char *argv)
@@ -43,20 +50,25 @@ t_mas				*check_tetrimisions1(char *argv)
 	if (i == 1)
 		return (check_tetrimisions2(i, str));
 	else
+	{
+		ft_strdel(&str);
 		return (NULL);
+	}
 	return (NULL);
 }
 
 t_coordinates		*fillit(t_mas *ptr)
 {
 	t_map			*map;
-	t_map			*first;
 	t_coordinates	*size;
 	t_coordinates	*dot;
 
 	dot = creat_coordinates(ptr);
 	size = creat_size(ptr);
 	map = newtetrimo(dot, size);
-	first = map;
-	return (creat_newcoordinates(first));
+	clean_coordinates(dot);
+	clean_coordinates(size);
+	dot = creat_newcoordinates(map);
+	clean_newtetrimo(map);
+	return (dot);
 }

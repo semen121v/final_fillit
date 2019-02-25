@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 18:53:41 by eschoen           #+#    #+#             */
-/*   Updated: 2019/02/24 19:22:06 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/25 21:24:00 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,10 @@ char		**fillit_resolve(t_coordinates *tet)
 	map = fillit_create_map(size);
 	while ((i = fillit_find_solution(map, tet, size)) == 0)
 	{
-		ft_memdel((void **)map);
+		ft_memdel_map(&map);
 		size++;
 		map = fillit_create_map(size);
 	}
+	clean_coordinates(tet);
 	return (map);
 }

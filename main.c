@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 17:37:28 by eschoen           #+#    #+#             */
-/*   Updated: 2019/02/24 18:58:36 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/25 21:38:39 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int					main(int ac, char **av)
 	cleanlist(ptr);
 	map = fillit_resolve(first);
 	ft_print_map_fillit(map);
-	ft_memdel((void **)map);
+	ft_memdel_map(&map);
 	return (0);
 }
