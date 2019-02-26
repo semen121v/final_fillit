@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:31:56 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/25 20:55:49 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/26 21:54:57 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static	int	ft_readlen(char *fd)
 	char	tmp;
 
 	i = 0;
+	tmp = 0;
 	file = open(fd, O_RDONLY);
 	while (read(file, &tmp, 1))
 	{

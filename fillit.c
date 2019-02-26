@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/23 18:04:29 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/25 23:16:45 by fshade           ###   ########.fr       */
+/*   Created: 2019/02/26 22:03:19 by fshade            #+#    #+#             */
+/*   Updated: 2019/02/26 23:58:17 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,13 @@ t_coordinates		*fillit(t_mas *ptr)
 
 	dot = creat_coordinates(ptr);
 	size = creat_size(ptr);
-	map = newtetrimo(dot, size);
+	if ((map = newtetrimo(dot, size)) == NULL)
+	{
+		clean_coordinates(dot);
+		clean_coordinates(size);
+		clean_newtetrimo(map);
+		return (0);
+	}
 	clean_coordinates(dot);
 	clean_coordinates(size);
 	dot = creat_newcoordinates(map);

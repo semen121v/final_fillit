@@ -6,7 +6,7 @@
 #    By: fshade <fshade@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/02 17:06:20 by eschoen           #+#    #+#              #
-#    Updated: 2019/02/25 19:38:58 by fshade           ###   ########.fr        #
+#    Updated: 2019/02/26 22:01:56 by fshade           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ LIB = libft.a
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
-	clang -o $(NAME) $(OBJ) -I./includes/ -I./libft/includes -L libft/ -lft -g
+	clang -o $(NAME) $(OBJ) -I./includes/ -I./libft/includes -L libft/ -lft
 
 $(LIB):
 	$(MAKE) -C libft/
 
 %.o: %.c
-	clang -Wall -Wextra -Werror -I./libft/includes -I./includes/ -o $@ -c $< -g
+	clang -Wall -Wextra -Werror -I./libft/includes -I./includes/ -o $@ -c $<
 	
 clean:
 	@rm -f $(OBJ)

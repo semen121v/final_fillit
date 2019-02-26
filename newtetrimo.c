@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 19:55:33 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/25 23:02:25 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/27 00:01:24 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ t_map			*newtetrimo(t_coordinates *dot, t_coordinates *size)
 {
 	t_map	*new;
 	t_map	*first;
-	int		i;
 
 	if (!size)
 		return (NULL);
@@ -87,15 +86,16 @@ t_map			*newtetrimo(t_coordinates *dot, t_coordinates *size)
 	first = new;
 	while (size)
 	{
-		i = size->dot[3][0] - size->dot[0][0] + 1;
-		createnewtetrimo1(new, i, size->dot[3][1] - size->dot[0][1] + 1);
+		createnewtetrimo1(new, size->dot[3][0] - size->dot[0][0] + 1, \
+				size->dot[3][1] - size->dot[0][1] + 1);
 		createnewtetrimo2(new, dot, size);
+		new->next = NULL;
 		if (dot->next == NULL)
 			break ;
-		new->next = (t_map*)malloc(sizeof(t_map));
+		if ((new->next = (t_map*)malloc(sizeof(t_map))) == NULL)
+			return (NULL);
 		new->next->prev = new;
 		new = new->next;
-		new->next = NULL;
 		dot = dot->next;
 		size = size->next;
 	}

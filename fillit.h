@@ -6,16 +6,9 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 17:27:17 by eschoen           #+#    #+#             */
-/*   Updated: 2019/02/25 22:20:25 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/26 22:08:11 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** The allowed functions are : exit, open, close, write, read, malloc and free.
-** Library fcntl.h for open(), read()
-** Library stdlib.h for malloc() and free()
-** Library unistd.h for close()
-*/
 
 #ifndef FILLIT_H
 # define FILLIT_H
@@ -24,7 +17,6 @@
 # include <fcntl.h>
 # include <libft.h>
 # define DOT '.'
-# define HASH '#'
 
 typedef struct				s_mas
 {
